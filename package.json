@@ -1,0 +1,20 @@
+{
+  "name": "aws_s3_benchmarking",
+  "version": "1.0.0",
+  "description": "a quick upload and download test using aws s3 and statsD",
+  "main": "index.js",
+  "repository": "https://github.com/Wambosa/aws_s3_benchmarking",
+  "scripts": {
+    "start": "index.js"
+  },
+  "author": "Shon Diaz <shondiaz@gmail.com> http://shondiaz.com",
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "dependencies": {
+    "aws-promised": "^2.13.0",
+    "aws-sdk": "^2.6.3",
+    "fs-extra": "^0.30.0",
+    "fs-extra-promise": "^0.4.1"
+  }
+}

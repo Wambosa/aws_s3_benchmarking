@@ -1,0 +1,6 @@
+{
+  "host": "stats.sclabs.com",
+  "port": 8125,
+  "type": "count",
+  "metricName": "aws.s3.upload"
+}
