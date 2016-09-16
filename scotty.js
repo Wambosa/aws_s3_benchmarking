@@ -45,7 +45,7 @@ module.exports = {
     },
 
     start: function(specifiedTime) {
-        socket = dgram.createSocket('udp4');
+        socket = require('dgram').createSocket('udp4');
         return startTime = specifiedTime || timeStamp();
     },
 

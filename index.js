@@ -1,6 +1,6 @@
 "use strict";
 
-var stats = require('./scotty');
+var stats = require('./scotty').configure();
 var conf = require('./conf.json');
 var AWS = require('aws-promised');
 var fs = require('fs-extra-promise');
@@ -12,16 +12,19 @@ function main() {
 
     console.log("BEGIN");
 
+    stats.start();
+
     fs.walk(conf.directory)
         .on('data', function (file) {
 
-            if (/\.jpg$/.test(file.path)) {
+            let filePath = clean(file.path);
 
-                let fileName = file.path
-                    .replace(/\\/g, '/')
-                    .replace(new RegExp(`${conf.directory}\/|${conf.directory}`, "i"), '');
+            if (new RegExp(conf.fileFilter, 'i').test(filePath)) {
 
-                console.log(`READ: ${file.path}`);
+                let fileName = filePath
+                    .replace(new RegExp(`.*${conf.directory}\/|.*${conf.directory}`, "i"), '');
+
+                console.log(`READ: ${filePath}`);
                 let body = fs.createReadStream(file.path);
                 body.read();
 
@@ -34,17 +37,24 @@ function main() {
 
                 s3.makeUnauthenticatedRequest('putObject', params, function (err, result) {
 
-                    console.log("AWSCALLBACK: "+!!err);
+                    console.log("UPLOAD COMPLETE");
+
                     if (err){
                         console.error(err);
                     } else {
-                        stats.send(1);
-                        console.log("STATS: +1");
+
+                        stats.send(1).then(function(){
+                            console.log("STATS: +1");
+                        });
                     }
                 });
-            }else{console.warn(`IGNORE: ${file.path}`)}
+            }else{console.warn(`IGNORE: ${filePath}`);}
         })
         .on('error', console.error);
+}
+
+function clean(str){
+    return str.replace(/\\/g, '/');
 }
 
 function getContentType(fileName){

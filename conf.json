@@ -1,5 +1,5 @@
 {
   "bucketName": "precious-documents",
-  "directory": "/work/git/pic_jenny/build/",
-  "fileFilter": "\\\\.jpg$"
+  "directory": "/temp",
+  "fileFilter": "\\.png$"
 }
