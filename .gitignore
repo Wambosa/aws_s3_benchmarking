@@ -1,5 +1,7 @@
 # Since devs use webstorm and Visual Studio, both exclusions are a part of this project
 
+conf.json
+
 # ignore jscrambler config
 .jscramblerrc
 

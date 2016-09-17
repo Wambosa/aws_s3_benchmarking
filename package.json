@@ -15,6 +15,8 @@
     "aws-promised": "^2.13.0",
     "aws-sdk": "^2.6.3",
     "fs-extra": "^0.30.0",
-    "fs-extra-promise": "^0.4.1"
+    "fs-extra-promise": "^0.4.1",
+    "mime": "^1.3.4",
+    "udp_stats": "git+https://github.com/wambosa/udp_stats.git"
   }
 }

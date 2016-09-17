@@ -1,6 +1,0 @@
-{
-  "host": "ec2-54-165-139-237.compute-1.amazonaws.com",
-  "port": 8125,
-  "type": "count",
-  "metricName": "aws.s3.upload"
-}

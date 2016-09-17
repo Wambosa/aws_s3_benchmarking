@@ -1,5 +1,6 @@
 {
   "bucketName": "precious-documents",
-  "directory": "/temp",
-  "fileFilter": "\\.png$"
+  "directory": "W:/work/git/pic_jenny/build",
+  "fileFilter": "\\.jpg$",
+  "concurrentUploads": 100
 }
