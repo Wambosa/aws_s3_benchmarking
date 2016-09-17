@@ -13,7 +13,7 @@ var stats = require('udp_stats').configure({
     metricName: "aws.s3.upload"
 });
 
-var s3 = new AWS.s3();
+var s3 = new AWS.s3({useAccelerateEndpoint: true});
 
 var droppedConnections = 0;
 
