@@ -21,6 +21,7 @@ function main() {
 
     let startTime = 0;
     let stopTime = 0;
+    let totalFiles = 0;
 
     console.log("BEGIN");
 
@@ -37,7 +38,10 @@ function main() {
                     console.warn(`IGNORE: ${file.path}`);
 
             })
-            .on('end', function(){resolve(fileList);})
+            .on('end', function(){
+                totalFiles = fileList.length;
+                resolve(fileList);
+            })
             .on('error', reject);
     })
     .then(function(fileList){
@@ -49,7 +53,7 @@ function main() {
     }).then(function(){
 
         stopTime = stats.stop();
-        console.log(`done!\n\n ${startTime}-${stopTime}=${startTime-stopTime} with ${droppedConnections} dropped`);
+        console.log(`done!\n\n ${totalFiles}@${stopTime-startTime} with ${droppedConnections} dropped`);
 
     }).catch(console.error);
 }
